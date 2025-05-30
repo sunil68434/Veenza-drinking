@@ -1,46 +1,193 @@
-<!DOCTYPE html><html lang="hi">
+<!DOCTYPE html>
+<html lang="hi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Veenza Order Form</title>
+  <title>Veenza Drinking Water Pvt. Ltd.</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #0099ff;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+    }
+    .products, form {
+      max-width: 600px;
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+    .product {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    button {
+      background: #0099ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #007acc;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <h2>Veenza Drinking Water - ऑर्डर फॉर्म</h2>  <form onsubmit="event.preventDefault(); submitOrder();">
-    <input type="text" id="name" placeholder="नाम" required><br><br>
-    <input type="text" id="mobile" placeholder="मोबाइल नंबर" required><br><br>
-    <textarea id="address" placeholder="पूरा पता" required></textarea><br><br><strong>प्रोडक्ट चुनें:</strong><br>
-<label><input type="checkbox" name="product" value="1L Bottle - ₹20"> 1L Bottle - ₹20</label><br>
-<label><input type="checkbox" name="product" value="20L Jar - ₹40"> 20L Jar - ₹40</label><br>
-<label><input type="checkbox" name="product" value="5L Can - ₹60"> 5L Can - ₹60</label><br><br>
 
-<button type="submit">Order Now</button>
+  <header>
+    <h1>Veenza Drinking Water Pvt. Ltd.</h1>
+  </header>
 
-  </form>  <script>
-    function submitOrder() {
-      const name = document.getElementById("name").value.trim();
-      const mobile = document.getElementById("mobile").value.trim();
-      const address = document.getElementById("address").value.trim();
+  <div class="container">
+    <h2>Products</h2>
+    <div class="products" id="product-list"></div>
 
-      const products = Array.from(document.querySelectorAll('input[name="product"]:checked'))
-        .map(p => p.value)
-        .join(", ");
+    <div id="bill" style="display:none">
+      <h3>Order Summary</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Cartons</th>
+            <th>Price/Carton</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="bill-body"></tbody>
+      </table>
+      <h3 id="grand-total"></h3>
+    </div>
 
-      if (!products) {
-        alert("कृपया कम से कम एक प्रोडक्ट चुनें।");
-        return;
+    <h2>फॉर्म भरें:</h2>
+    <form onsubmit="event.preventDefault(); sendData();">
+      <input type="text" id="name" placeholder="नाम" required />
+      <input type="email" id="email" placeholder="ईमेल" required />
+      <input type="text" id="mobile" placeholder="मोबाइल नंबर" required />
+      <textarea id="address" placeholder="पूरा पता" required></textarea>
+      <button type="submit">सबमिट करें</button>
+    </form>
+  </div>
+
+  <script>
+    const products = [
+      { name: '250ml Bottle', price: 5 * 12 },
+      { name: '500ml Bottle', price: 7 * 12 },
+      { name: '1L Bottle', price: 8 * 12 },
+      { name: '5L Jar', price: 10 * 12 },
+      { name: '10L Jar', price: 15 * 12 },
+    ];
+
+    const cart = [];
+
+    const productList = document.getElementById('product-list');
+
+    function updateBill() {
+      const bill = document.getElementById('bill');
+      const tbody = document.getElementById('bill-body');
+      const grandTotal = document.getElementById('grand-total');
+
+      tbody.innerHTML = '';
+      let total = 0;
+
+      cart.forEach(item => {
+        const row = `<tr>
+          <td>${item.name}</td>
+          <td>${item.qty}</td>
+          <td>₹${item.price}</td>
+          <td>₹${item.price * item.qty}</td>
+        </tr>`;
+        tbody.innerHTML += row;
+        total += item.qty * item.price;
+      });
+
+      grandTotal.textContent = "Grand Total: ₹" + total;
+      bill.style.display = 'block';
+    }
+
+    function addToCart(index) {
+      const qty = parseInt(document.getElementById(`qty-${index}`).value);
+      if (qty >= 4) {
+        cart.push({ ...products[index], qty });
+        alert(`${products[index].name} (${qty} cartons) को जोड़ा गया`);
+        updateBill();
+      } else {
+        alert("कम से कम 4 cartons का ऑर्डर होना चाहिए");
       }
+    }
 
-      fetch("https://script.google.com/macros/s/AKfycbxfbuF4bD6AWAmM1C2wc_kuWt5_OXB10MIoHgARa03ppD20qc2l4SlMMIgFVijlOsxw/exec", {
+    products.forEach((p, i) => {
+      const div = document.createElement('div');
+      div.className = 'product';
+      div.innerHTML = `
+        <h3>${p.name}</h3>
+        <p>₹${p.price} per carton (12 bottles)</p>
+        <label>Cartons: <input type='number' id='qty-${i}' value='4' min='4'></label>
+        <button onclick='addToCart(${i})'>Add to Cart</button>
+      `;
+      productList.appendChild(div);
+    });
+
+    function sendData() {
+      const url = "https://script.google.com/macros/s/AKfycbxfbuF4bD6AWAmM1C2wc_kuWt5_OXB10MIoHgARa03ppD20qc2l4SlMMIgFVijlOsxw/exec";
+
+      const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        mobile: document.getElementById("mobile").value,
+        address: document.getElementById("address").value,
+        cart: cart.map(item => ({
+          name: item.name,
+          qty: item.qty,
+          price: item.price,
+          total: item.qty * item.price
+        }))
+      };
+
+      fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, mobile, address, products })
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
       })
       .then(res => res.text())
       .then(msg => {
-        alert("✅ ऑर्डर सफलतापूर्वक भेज दिया गया है!");
+        alert(msg || "ऑर्डर सफलतापूर्वक भेजा गया!");
         document.querySelector("form").reset();
+        document.getElementById("bill").style.display = "none";
       })
-      .catch(err => alert("❌ कुछ गलती हुई: " + err));
+      .catch(err => {
+        console.error(err);
+        alert("डेटा भेजने में त्रुटि हुई");
+      });
     }
-  </script></body>
+  </script>
+</body>
 </html>
