@@ -20,6 +20,7 @@
       justify-content: space-between;
       position: sticky;
       top: 0;
+      z-index: 1000;
     }
 
     .menu-btn {
@@ -108,6 +109,13 @@
       cursor: pointer;
     }
 
+    .cart-summary {
+      padding: 20px;
+      background: #f9f9f9;
+      border-top: 2px solid #ccc;
+      text-align: center;
+    }
+
     .order-form {
       padding: 30px;
       background: #f2f2f2;
@@ -181,30 +189,35 @@
     <img src="images/water1.jpg" alt="1L Bottle">
     <h3>1 Litre Bottle</h3>
     <p>₹20 per bottle</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <button class="add-to-cart" data-price="20">Add to Cart</button>
   </div>
   <div class="product">
     <img src="images/water2.jpg" alt="500ml Bottle">
     <h3>500ml Bottle</h3>
     <p>₹10 per bottle</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <button class="add-to-cart" data-price="10">Add to Cart</button>
   </div>
   <div class="product">
     <img src="images/water3.jpg" alt="20L Jar">
     <h3>20 Litre Jar</h3>
     <p>₹80 per jar</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <button class="add-to-cart" data-price="80">Add to Cart</button>
   </div>
+</section>
+
+<section class="cart-summary">
+  <h3>Total: ₹<span id="cart-total">0</span></h3>
 </section>
 
 <section class="order-form">
   <h2>Place Your Order</h2>
-  <form>
+  <form onsubmit="submitOrder(event)">
     <input type="text" placeholder="Your Name" required />
     <input type="email" placeholder="Email" required />
+    <input type="tel" placeholder="Mobile Number" required />
     <input type="text" placeholder="Home Address" required />
-    <select>
-      <option>Select Payment Method</option>
+    <select required>
+      <option value="">Select Payment Method</option>
       <option>Cash on Delivery</option>
       <option>UPI / QR Code</option>
       <option>Net Banking</option>
@@ -231,6 +244,25 @@
   function toggleMenu() {
     const menu = document.getElementById("menu");
     menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+
+  let total = 0;
+  const totalElement = document.getElementById("cart-total");
+
+  document.querySelectorAll(".add-to-cart").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const price = parseInt(btn.getAttribute("data-price"));
+      total += price;
+      totalElement.textContent = total;
+    });
+  });
+
+  function submitOrder(event) {
+    event.preventDefault();
+    alert("Order Successfully Submitted!");
+    total = 0;
+    totalElement.textContent = 0;
+    event.target.reset();
   }
 </script>
 
