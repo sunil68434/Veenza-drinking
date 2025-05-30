@@ -12,7 +12,38 @@
       margin: 0;  
       padding: 0;  
       color: #000;  
+      font-size: 14px;  
+      line-height: 1.4;  
     }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0 10px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+    }
+
+    .product p,  
+    .checkout-form input,  
+    .checkout-form select,  
+    .bill,  
+    footer p,  
+    nav input {
+      font-size: 13px;
+    }
+
     header {  
       background-color: #0099ff;  
       color: white;  
@@ -21,32 +52,39 @@
       justify-content: space-between;  
       align-items: center;  
     }  
+
     header img {  
       height: 60px;  
       border-radius: 50%;  
     }  
+
     nav input {  
       padding: 5px;  
       width: 300px;  
-      font-size: 16px;  
+      font-size: 13px;  
     }  
+
     .container {  
       padding: 20px;  
     }  
+
     .products {  
       display: grid;  
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  
       gap: 20px;  
     }  
+
     .product {  
       background: white;  
       border-radius: 10px;  
       padding: 20px;  
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
     }  
+
     .product h3 {  
       margin-top: 0;  
     }  
+
     .product button {  
       background-color: #0099ff;  
       color: white;  
@@ -55,13 +93,16 @@
       cursor: pointer;  
       border-radius: 5px;  
     }  
+
     .checkout-form input,  
     .checkout-form select {  
       display: block;  
       margin: 10px 0;  
       padding: 10px;  
       width: 100%;  
+      font-size: 13px;
     }  
+
     .bill {  
       margin-top: 30px;  
       background: #fff;  
@@ -69,12 +110,14 @@
       border-radius: 10px;  
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
     }  
+
     footer {  
       margin-top: 50px;  
       text-align: center;  
       padding: 20px;  
       background-color: #000;  
       color: white;  
+      font-size: 13px;
     }  
   </style>  
 </head>
@@ -106,7 +149,7 @@
       </table>  
       <h3 id="grand-total"></h3>  
     </div>  
-  
+
     <h2>Checkout</h2>  
     <form class="checkout-form" id="checkout-form">  
       <input type="text" name="name" placeholder="Full Name" required />  
@@ -137,28 +180,28 @@
       { name: '5L Jar', price: 10 * 12 },  
       { name: '10L Jar', price: 15 * 12 },  
     ];  
-  
+
     const productList = document.getElementById('product-list');  
     const cart = [];  
-  
+
     function updateBill() {  
       const billDiv = document.getElementById('bill');  
       const billBody = document.getElementById('bill-body');  
       const grandTotal = document.getElementById('grand-total');  
-  
+
       billBody.innerHTML = '';  
       let total = 0;  
-  
+
       cart.forEach(item => {  
         const row = `<tr><td>${item.name}</td><td>${item.qty}</td><td>₹${item.price}</td><td>₹${item.price * item.qty}</td></tr>`;  
         total += item.price * item.qty;  
         billBody.innerHTML += row;  
       });  
-  
+
       grandTotal.innerText = 'Grand Total: ₹' + total;  
-      billDiv.style.display = cart.length > 0 ? 'block' : 'none';  
+      billDiv.style.display = 'block';  
     }  
-  
+
     products.forEach((product, index) => {  
       const div = document.createElement('div');  
       div.className = 'product';  
@@ -170,7 +213,7 @@
       `;  
       productList.appendChild(div);  
     });  
-  
+
     function addToCart(index) {  
       const qty = parseInt(document.getElementById(`qty-${index}`).value);  
       if (qty >= 4) {  
@@ -181,46 +224,29 @@
         alert("Minimum order is 4 cartons");  
       }  
     }  
-  
-    document.getElementById('checkout-form').addEventListener('submit', async (e) => {  
-      e.preventDefault();
 
-      if(cart.length === 0){
-        alert("Please add products to cart before placing order.");
-        return;
-      }
-
+    document.getElementById('checkout-form').addEventListener('submit', (e) => {  
+      e.preventDefault();  
       const data = new FormData(e.target);  
       const details = Object.fromEntries(data.entries());  
-  
-      const orderData = {  
-        customer: details,  
-        items: cart,  
-      };
+      let csv = 'Product,Cartons,Price/Carton,Total\n';  
+      let total = 0;  
 
-      try {
-        const SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'; // Replace with your Apps Script URL
+      cart.forEach(item => {  
+        const rowTotal = item.qty * item.price;  
+        total += rowTotal;  
+        csv += `${item.name},${item.qty},${item.price},${rowTotal}\n`;  
+      });  
 
-        await fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors', // Apps Script Web Apps require this for anonymous POST
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(orderData),
-        });
+      csv += `\nName,${details.name}\nEmail,${details.email}\nPhone,${details.mobile}\nAddress,${details.address}\nPayment,${details.payment}\nGrand Total,${total}`;  
 
-        alert('Order placed successfully! We have received your order.');
+      const blob = new Blob([csv], { type: 'text/csv' });  
+      const link = document.createElement('a');  
+      link.href = URL.createObjectURL(blob);  
+      link.download = 'veenaza-order.csv';  
+      link.click();  
 
-        // Reset cart and UI
-        cart.length = 0;
-        updateBill();
-        e.target.reset();
-
-      } catch (error) {
-        alert('Failed to place order. Please try again later.');
-        console.error(error);
-      }
+      alert('Order placed successfully! CSV saved.');  
     });  
   </script>
 </body>
