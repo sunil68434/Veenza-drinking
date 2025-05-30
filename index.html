@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Veenza Drinking Water Pvt. Ltd.</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,6 +13,7 @@
       padding: 0;
       color: #000;
     }
+
     header {
       background-color: #0099ff;
       color: white;
@@ -21,32 +22,39 @@
       justify-content: space-between;
       align-items: center;
     }
+
     header img {
       height: 60px;
       border-radius: 50%;
     }
+
     nav input {
       padding: 5px;
       width: 300px;
       font-size: 16px;
     }
+
     .container {
       padding: 20px;
     }
+
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
+
     .product {
       background: white;
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+
     .product h3 {
       margin-top: 0;
     }
+
     .product button {
       background-color: #0099ff;
       color: white;
@@ -55,13 +63,7 @@
       cursor: pointer;
       border-radius: 5px;
     }
-    .checkout-form input,
-    .checkout-form select {
-      display: block;
-      margin: 10px 0;
-      padding: 10px;
-      width: 100%;
-    }
+
     .bill {
       margin-top: 30px;
       background: #fff;
@@ -69,6 +71,31 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+
+    form input,
+    form textarea,
+    form select,
+    form button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    form button {
+      background-color: #0099ff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #007acc;
+    }
+
     footer {
       margin-top: 50px;
       text-align: center;
@@ -79,13 +106,13 @@
   </style>
 </head>
 <body>
+
   <header>
     <div><img src="logo.png" alt="Logo" /></div>
     <h1>Veenza Drinking Water Pvt. Ltd.</h1>
-    <nav>
-      <input type="text" placeholder="Search..." />
-    </nav>
+    <nav><input type="text" placeholder="Search..." /></nav>
   </header>
+
   <div class="container">
     <h2>Our Products</h2>
     <div class="products" id="product-list"></div>
@@ -106,26 +133,23 @@
       <h3 id="grand-total"></h3>
     </div>
 
-    <h2>Checkout</h2>
-    <form class="checkout-form" id="checkout-form">
-      <input type="text" name="name" placeholder="Full Name" required />
-      <input type="email" name="email" placeholder="Email Address" required />
-      <input type="tel" name="mobile" placeholder="Mobile Number" required />
-      <input type="text" name="address" placeholder="Full Address" required />
-      <select name="payment" required>
-        <option value="">Select Payment Method</option>
-        <option value="card">Credit/Debit Card</option>
-        <option value="upi">UPI</option>
-        <option value="cod">Cash on Delivery</option>
-      </select>
-      <button type="submit">Place Order</button>
+    <h2>फॉर्म भरें:</h2>
+    <form onsubmit="event.preventDefault(); sendData();">
+      <input type="text" id="name" placeholder="नाम" required />
+      <input type="email" id="email" placeholder="ईमेल" required />
+      <input type="text" id="mobile" placeholder="मोबाइल नंबर" required />
+      <textarea id="address" placeholder="पूरा पता" required></textarea>
+      <input type="url" id="pdfLink" placeholder="PDF लिंक (Google Drive)" />
+      <button type="submit">सबमिट करें</button>
     </form>
   </div>
+
   <footer>
     <p>Pure Water, Healthy Life</p>
     <p>Govindgarh, Pushkar ke pass, Ajmer - 305201</p>
     <p>Follow us on: [Social Media Links]</p>
   </footer>
+
   <script>
     const products = [
       { name: '250ml Bottle', price: 5 * 12 },
@@ -179,25 +203,42 @@
       }
     }
 
-    document.getElementById('checkout-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      if(cart.length === 0){
-        alert('Please add products to cart before placing order.');
-        return;
-      }
-      const data = new FormData(e.target);
-      const details = Object.fromEntries(data.entries());
+    function sendData() {
+      const url = "https://script.google.com/macros/s/AKfycbxfbuF4bD6AWAmM1C2wc_kuWt5_OXB10MIoHgARa03ppD20qc2l4SlMMIgFVijlOsxw/exec";
 
-      let total = 0;
-      cart.forEach(item => {
-        total += item.qty * item.price;
+      const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        mobile: document.getElementById("mobile").value,
+        address: document.getElementById("address").value,
+        pdfLink: document.getElementById("pdfLink").value,
+        cart: cart.map(item => ({
+          name: item.name,
+          qty: item.qty,
+          price: item.price,
+          total: item.qty * item.price
+        }))
+      };
+
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => res.text())
+      .then(msg => {
+        alert(msg || "ऑर्डर सफलतापूर्वक भेजा गया!");
+        document.querySelector("form").reset();
+        document.getElementById("bill").style.display = "none";
+      })
+      .catch(err => {
+        console.error(err);
+        alert("डेटा भेजने में त्रुटि हुई। कृपया फिर से प्रयास करें।");
       });
-
-      alert(`Thank you ${details.name}! Your order has been placed successfully.\nTotal Amount: ₹${total}`);
-      e.target.reset();
-      cart.length = 0;
-      document.getElementById('bill').style.display = 'none';
-    });
+    }
   </script>
+
 </body>
 </html>
