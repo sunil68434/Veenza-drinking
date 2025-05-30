@@ -1,227 +1,165 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Veenza Drinking Water</title>
   <style>
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
+      padding: 0;
+      background-color: #e6f7ff;
       color: #000;
     }
     header {
-      background: skyblue;
+      background-color: #000;
+      color: #fff;
+      padding: 10px 20px;
       display: flex;
-      justify-content: flex-start;
       align-items: center;
-      padding: 20px;
+      justify-content: space-between;
     }
     .logo {
-      display: flex;
-      align-items: center;
-    }
-    .logo img {
-      width: 60px;
-      height: 60px;
       border-radius: 50%;
-      margin-right: 15px;
+      height: 60px;
     }
-    header h1 {
-      margin: 0;
-      font-size: 1.5rem;
-      color: black;
+    .title {
+      font-size: 24px;
+      font-weight: bold;
     }
     .tagline {
-      background: #fff;
-      padding: 20px;
       text-align: center;
-      font-size: 1.25rem;
-      color: #007BFF;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      color: #007BFF;
-      border-bottom: 2px solid #000;
-      padding-bottom: 10px;
+      font-size: 20px;
+      margin: 10px 0;
     }
     .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
     }
     .product {
-      background: #fff;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 250px;
+      margin: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     .product h3 {
-      margin-top: 0;
-    }
-    .quantity {
-      display: flex;
-      align-items: center;
       margin: 10px 0;
     }
-    .quantity button {
-      background: #007BFF;
+    .cart-btn, .checkout-btn {
+      background-color: #00aaff;
       color: white;
+      padding: 10px;
       border: none;
-      padding: 5px 10px;
-      margin: 0 5px;
       border-radius: 5px;
       cursor: pointer;
     }
-    .order-button, .add-to-cart {
-      display: inline-block;
-      margin-top: 10px;
-      background: black;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 5px;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-    .service {
-      background: #fff;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .social-media {
-      margin-top: 30px;
+    .quantity-input {
+      width: 60px;
+      margin: 5px;
     }
     footer {
-      background: #007BFF;
-      color: white;
       text-align: center;
-      padding: 20px;
-    }
-    form input, form textarea {
-      width: 100%;
       padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    form button {
-      background: #28a745;
+      background: #000;
       color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
+      margin-top: 20px;
+    }
+    .feedback-form, .checkout {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
     }
   </style>
-  <script>
-    function increment(id) {
-      const input = document.getElementById(id);
-      let value = parseInt(input.value);
-      input.value = value + 1;
-    }
-    function decrement(id) {
-      const input = document.getElementById(id);
-      let value = parseInt(input.value);
-      if (value > 100) {
-        input.value = value - 1;
-      }
-    }
-    function addToCart(product, id) {
-      const quantity = document.getElementById(id).value;
-      alert(`${quantity} bottles of ${product} added to cart.`);
-    }
-  </script>
 </head>
-<body>
-  <header>
-    <div class="logo">
-      <img src="logo.png" alt="Veenza Logo">
-      <h1>Veenza Drinking Water Private Limited Company</h1>
-    </div>
-  </header>  <div class="tagline">Pure Water, Healthy Life</div>  <section id="products">
-    <h2>Our Products</h2>
-    <div class="products">
-      <div class="product">
-        <h3>250 ml Water Bottle</h3>
-        <div class="quantity">
-          <button onclick="decrement('q1')">-</button>
-          <input id="q1" type="number" value="100" min="100" readonly />
-          <button onclick="increment('q1')">+</button>
-        </div>
-        <button class="add-to-cart" onclick="addToCart('250 ml Water Bottle', 'q1')">Add to Cart</button>
-      </div>
-      <div class="product">
-        <h3>500 ml Water Bottle</h3>
-        <div class="quantity">
-          <button onclick="decrement('q2')">-</button>
-          <input id="q2" type="number" value="100" min="100" readonly />
-          <button onclick="increment('q2')">+</button>
-        </div>
-        <button class="add-to-cart" onclick="addToCart('500 ml Water Bottle', 'q2')">Add to Cart</button>
-      </div>
-      <div class="product">
-        <h3>1 Litre Water Bottle</h3>
-        <div class="quantity">
-          <button onclick="decrement('q3')">-</button>
-          <input id="q3" type="number" value="100" min="100" readonly />
-          <button onclick="increment('q3')">+</button>
-        </div>
-        <button class="add-to-cart" onclick="addToCart('1 Litre Water Bottle', 'q3')">Add to Cart</button>
-      </div>
-      <div class="product">
-        <h3>5 Litre Water Jar</h3>
-        <div class="quantity">
-          <button onclick="decrement('q4')">-</button>
-          <input id="q4" type="number" value="100" min="100" readonly />
-          <button onclick="increment('q4')">+</button>
-        </div>
-        <button class="add-to-cart" onclick="addToCart('5 Litre Water Jar', 'q4')">Add to Cart</button>
-      </div>
-      <div class="product">
-        <h3>10 Litre Water Jar</h3>
-        <div class="quantity">
-          <button onclick="decrement('q5')">-</button>
-          <input id="q5" type="number" value="100" min="100" readonly />
-          <button onclick="increment('q5')">+</button>
-        </div>
-        <button class="add-to-cart" onclick="addToCart('10 Litre Water Jar', 'q5')">Add to Cart</button>
-      </div>
-    </div>
-  </section>  <section id="services">
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="service">We provide delivery all over India</div>
-      <div class="service">Bulk supply minimum 100 Litres</div>
-    </div>
-    <a href="https://wa.me/917976065034" class="order-button" target="_blank">Order on WhatsApp</a>
-  </section>  <section id="feedback">
-    <h2>Feedback Form</h2>
-    <form action="mailto:sunilsila369@gmail.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="4" placeholder="Your Feedback" required></textarea>
-      <button type="submit">Submit Feedback</button>
-    </form>
-  </section>  <section id="contact">
-    <h2>Contact Details</h2>
-    <p>Address: Govindgarh, Pushkar ke Pass, Ajmer, 305201</p>
-    <p>Phone: <a href="tel:+917976065034">+91 79760 65034</a></p>
-    <div class="social-media">
-      <p>Follow us on: [Social Media Links Here]</p>
-    </div>
-  </section>  <footer>
-    &copy; 2025 Veenza Drinking Water Pvt. Ltd. All Rights Reserved.
-  </footer>
-</body>
+<body><header>
+  <img src="logo.png" alt="Veenza Logo" class="logo">
+  <div class="title">Veenza Drinking Water Private Limited Company</div>
+</header><div class="tagline">Pure Water, Healthy Life</div><div class="products">
+  <div class="product">
+    <h3>250ml Bottle</h3>
+    <p>Price: ₹5</p>
+    <input type="number" class="quantity-input" min="100" value="100" id="qty250">
+    <button class="cart-btn" onclick="addToCart('250ml', 5, 'qty250')">Add to Cart</button>
+  </div>
+  <div class="product">
+    <h3>500ml Bottle</h3>
+    <p>Price: ₹7</p>
+    <input type="number" class="quantity-input" min="100" value="100" id="qty500">
+    <button class="cart-btn" onclick="addToCart('500ml', 7, 'qty500')">Add to Cart</button>
+  </div>
+  <div class="product">
+    <h3>1L Bottle</h3>
+    <p>Price: ₹8</p>
+    <input type="number" class="quantity-input" min="100" value="100" id="qty1L">
+    <button class="cart-btn" onclick="addToCart('1L', 8, 'qty1L')">Add to Cart</button>
+  </div>
+  <div class="product">
+    <h3>5L Jar</h3>
+    <p>Price: ₹10</p>
+    <input type="number" class="quantity-input" min="100" value="100" id="qty5L">
+    <button class="cart-btn" onclick="addToCart('5L', 10, 'qty5L')">Add to Cart</button>
+  </div>
+  <div class="product">
+    <h3>10L Jar</h3>
+    <p>Price: ₹15</p>
+    <input type="number" class="quantity-input" min="100" value="100" id="qty10L">
+    <button class="cart-btn" onclick="addToCart('10L', 15, 'qty10L')">Add to Cart</button>
+  </div>
+</div><div class="checkout">
+  <h2>Checkout</h2>
+  <p><strong>Items:</strong></p>
+  <div id="cartList"></div>
+  <label for="payment">Select Payment Method:</label>
+  <select id="payment">
+    <option value="">--Choose Payment Method--</option>
+    <option value="Card">Card</option>
+    <option value="UPI">UPI</option>
+    <option value="COD">Cash on Delivery</option>
+  </select>
+  <br><br>
+  <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+</div><div class="feedback-form">
+  <h2>Feedback</h2>
+  <form action="https://formspree.io/f/xeqybpbg" method="POST">
+    <label>Name:</label><br>
+    <input type="text" name="name" required><br>
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br>
+    <label>Message:</label><br>
+    <textarea name="message" rows="5" required></textarea><br><br>
+    <button class="cart-btn" type="submit">Submit</button>
+  </form>
+</div><footer>
+  &copy; 2025 Veenza. All rights reserved. | Social Media: [Add here]
+</footer><script>
+  const cart = [];
+
+  function addToCart(name, price, qtyId) {
+    const qty = document.getElementById(qtyId).value;
+    cart.push({ name, qty, price });
+    alert(name + ' added to cart!');
+    updateCartList();
+  }
+
+  function updateCartList() {
+    const cartList = document.getElementById("cartList");
+    cartList.innerHTML = cart.map(item => `<p>${item.name} x ${item.qty} = ₹${item.qty * item.price}</p>`).join('');
+  }
+
+  function checkout() {
+    const method = document.getElementById("payment").value;
+    if (!method) {
+      alert("Please select a payment method.");
+    } else {
+      alert("Thank you for your order! Payment Method: " + method);
+    }
+  }
+</script></body>
 </html>
