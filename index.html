@@ -6,248 +6,320 @@
   <title>Veenza Drinking Water Pvt. Ltd.</title>  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />  
   <style>  
-    body {  
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
-      background-color: #f0f8ff;  
-      margin: 0;  
-      padding: 0;  
-      color: #000;  
-      font-size: 14px;  
-      line-height: 1.4;  
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fbff;
+      margin: 0;
+      padding: 0;
+      color: #222;
+      font-size: 14px;
     }
 
-    h1 {
-      font-size: 24px;
-      font-weight: 600;
-      margin: 0 10px;
+    header {
+      background-color: #0099ff;
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .header-left img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+    }
+
+    .company-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .company-info h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .company-info small {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    nav input {
+      padding: 6px;
+      font-size: 13px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .container {
+      padding: 20px;
     }
 
     h2 {
-      font-size: 20px;
-      font-weight: 600;
-      margin-top: 20px;
+      font-size: 18px;
       margin-bottom: 10px;
     }
 
-    h3 {
-      font-size: 16px;
-      font-weight: 600;
-      margin: 0 0 8px 0;
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
 
-    .product p,  
-    .checkout-form input,  
-    .checkout-form select,  
-    .bill,  
-    footer p,  
-    nav input {
+    .product {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .product h3 {
+      margin-top: 0;
+      font-size: 15px;
+    }
+
+    .product p {
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .product input {
+      width: 60px;
+    }
+
+    .product button {
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 5px;
+      cursor: pointer;
       font-size: 13px;
     }
 
-    header {  
-      background-color: #0099ff;  
-      color: white;  
-      padding: 15px 20px;  
-      display: flex;  
-      justify-content: space-between;  
-      align-items: center;  
-    }  
+    .bill {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-    header img {  
-      height: 60px;  
-      border-radius: 50%;  
-    }  
-
-    nav input {  
-      padding: 5px;  
-      width: 300px;  
-      font-size: 13px;  
-    }  
-
-    .container {  
-      padding: 20px;  
-    }  
-
-    .products {  
-      display: grid;  
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  
-      gap: 20px;  
-    }  
-
-    .product {  
-      background: white;  
-      border-radius: 10px;  
-      padding: 20px;  
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
-    }  
-
-    .product h3 {  
-      margin-top: 0;  
-    }  
-
-    .product button {  
-      background-color: #0099ff;  
-      color: white;  
-      border: none;  
-      padding: 10px;  
-      cursor: pointer;  
-      border-radius: 5px;  
-    }  
-
-    .checkout-form input,  
-    .checkout-form select {  
-      display: block;  
-      margin: 10px 0;  
-      padding: 10px;  
-      width: 100%;  
+    table {
+      width: 100%;
       font-size: 13px;
-    }  
+      border-collapse: collapse;
+    }
 
-    .bill {  
-      margin-top: 30px;  
-      background: #fff;  
-      padding: 20px;  
-      border-radius: 10px;  
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
-    }  
+    th, td {
+      padding: 8px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
 
-    footer {  
-      margin-top: 50px;  
-      text-align: center;  
-      padding: 20px;  
-      background-color: #000;  
-      color: white;  
+    .checkout-form {
+      margin-top: 20px;
+    }
+
+    .checkout-form input, .checkout-form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
       font-size: 13px;
-    }  
-  </style>  
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .checkout-form button {
+      background-color: #0099ff;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .whatsapp-btn {
+      background-color: #25D366;
+      color: white;
+      padding: 10px;
+      display: inline-block;
+      border-radius: 5px;
+      margin-top: 15px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .branches {
+      margin-top: 30px;
+    }
+
+    footer {
+      background-color: #000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 13px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
-<body>  
-  <header>  
-    <div><img src="logo.png" alt="Logo" /></div>  
-    <h1>Veenza Drinking Water Pvt. Ltd.</h1>  
-    <nav>  
-      <input type="text" placeholder="Search..." />  
-    </nav>  
-  </header>  
+<body>
 
-  <div class="container">  
-    <h2>Our Products</h2>  
+  <header>
+    <div class="header-left">
+      <img src="logo.png" alt="Logo">
+      <div class="company-info">
+        <h1>Veenza Drinking Water Pvt. Ltd.</h1>
+        <small>Pure Water, Healthy Life</small>
+        <small>Govindgarh, Pushkar ke pass, Ajmer - 305201</small>
+      </div>
+    </div>
+    <nav>
+      <input type="text" placeholder="Search...">
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Our Products</h2>
     <div class="products" id="product-list"></div>
 
-    <div class="bill" id="bill" style="display:none">  
-      <h2>Order Summary</h2>  
-      <table width="100%" border="1" cellpadding="10">  
-        <thead>  
-          <tr>  
-            <th>Product</th>  
-            <th>Cartons</th>  
-            <th>Price/Carton</th>  
-            <th>Total</th>  
-          </tr>  
-        </thead>  
-        <tbody id="bill-body"></tbody>  
-      </table>  
-      <h3 id="grand-total"></h3>  
-    </div>  
+    <div class="bill" id="bill" style="display:none">
+      <h2>Order Summary</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Cartons</th>
+            <th>Price/Carton</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="bill-body"></tbody>
+      </table>
+      <h3 id="grand-total"></h3>
+    </div>
 
-    <h2>Checkout</h2>  
-    <form class="checkout-form" id="checkout-form">  
-      <input type="text" name="name" placeholder="Full Name" required />  
-      <input type="email" name="email" placeholder="Email Address" required />  
-      <input type="tel" name="mobile" placeholder="Mobile Number" required />  
-      <input type="text" name="address" placeholder="Full Address" required />  
-      <select name="payment" required>  
-        <option value="">Select Payment Method</option>  
-        <option value="card">Credit/Debit Card</option>  
-        <option value="upi">UPI</option>  
-        <option value="cod">Cash on Delivery</option>  
-      </select>  
-      <button type="submit">Place Order</button>  
-    </form>  
-  </div>  
+    <h2>Checkout</h2>
+    <form class="checkout-form" id="checkout-form">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+      <input type="tel" name="mobile" placeholder="Mobile Number" required />
+      <input type="text" name="address" placeholder="Full Address" required />
+      <select name="payment" required>
+        <option value="">Select Payment Method</option>
+        <option value="card">Credit/Debit Card</option>
+        <option value="upi">UPI</option>
+        <option value="cod">Cash on Delivery</option>
+      </select>
+      <button type="submit">Place Order</button>
+    </form>
 
-  <footer>  
-    <p>Pure Water, Healthy Life</p>  
-    <p>Govindgarh, Pushkar ke pass, Ajmer - 305201</p>  
-    <p>Follow us on: [Social Media Links]</p>  
-  </footer>  
+    <a class="whatsapp-btn" href="https://wa.me/917976065034" target="_blank">
+      <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+    </a>
 
-  <script>  
-    const products = [  
-      { name: '250ml Bottle', price: 5 * 12 },  
-      { name: '500ml Bottle', price: 7 * 12 },  
-      { name: '1L Bottle', price: 8 * 12 },  
-      { name: '5L Jar', price: 10 * 12 },  
-      { name: '10L Jar', price: 15 * 12 },  
-    ];  
+    <div class="branches">
+      <h2>Our Branches</h2>
+      <ul>
+        <li><strong>Ajmer Main Plant:</strong> Govindgarh, near Pushkar, Ajmer - 305201</li>
+        <li><strong>Branch 1:</strong> Jaipur Road, Kishangarh</li>
+        <li><strong>Branch 2:</strong> Beawar Highway, Ajmer</li>
+        <li><strong>Branch 3:</strong> Kekri Market Area</li>
+      </ul>
+    </div>
+  </div>
 
-    const productList = document.getElementById('product-list');  
-    const cart = [];  
+  <footer>
+    <p>&copy; 2025 Veenza Drinking Water Pvt. Ltd. All Rights Reserved.</p>
+    <p>Follow us on: Facebook | Instagram | Twitter</p>
+  </footer>
 
-    function updateBill() {  
-      const billDiv = document.getElementById('bill');  
-      const billBody = document.getElementById('bill-body');  
-      const grandTotal = document.getElementById('grand-total');  
+  <script>
+    const products = [
+      { name: '250ml Bottle', price: 5 * 12 },
+      { name: '500ml Bottle', price: 7 * 12 },
+      { name: '1L Bottle', price: 8 * 12 },
+      { name: '5L Jar', price: 10 * 12 },
+      { name: '10L Jar', price: 15 * 12 },
+    ];
 
-      billBody.innerHTML = '';  
-      let total = 0;  
+    const productList = document.getElementById('product-list');
+    const cart = [];
 
-      cart.forEach(item => {  
-        const row = `<tr><td>${item.name}</td><td>${item.qty}</td><td>₹${item.price}</td><td>₹${item.price * item.qty}</td></tr>`;  
-        total += item.price * item.qty;  
-        billBody.innerHTML += row;  
-      });  
+    function updateBill() {
+      const billDiv = document.getElementById('bill');
+      const billBody = document.getElementById('bill-body');
+      const grandTotal = document.getElementById('grand-total');
 
-      grandTotal.innerText = 'Grand Total: ₹' + total;  
-      billDiv.style.display = 'block';  
-    }  
+      billBody.innerHTML = '';
+      let total = 0;
 
-    products.forEach((product, index) => {  
-      const div = document.createElement('div');  
-      div.className = 'product';  
-      div.innerHTML = `  
-        <h3>${product.name}</h3>  
-        <p>₹${product.price} per carton (12 bottles)</p>  
-        <label>Cartons: <input type='number' min='4' value='4' id='qty-${index}'></label>  
-        <button onclick='addToCart(${index})'>Add to Cart</button>  
-      `;  
-      productList.appendChild(div);  
-    });  
+      cart.forEach(item => {
+        const row = `<tr><td>${item.name}</td><td>${item.qty}</td><td>₹${item.price}</td><td>₹${item.price * item.qty}</td></tr>`;
+        total += item.price * item.qty;
+        billBody.innerHTML += row;
+      });
 
-    function addToCart(index) {  
-      const qty = parseInt(document.getElementById(`qty-${index}`).value);  
-      if (qty >= 4) {  
-        cart.push({ ...products[index], qty });  
-        alert(`${products[index].name} added to cart with ${qty} cartons`);  
-        updateBill();  
-      } else {  
-        alert("Minimum order is 4 cartons");  
-      }  
-    }  
+      grandTotal.innerText = 'Grand Total: ₹' + total;
+      billDiv.style.display = 'block';
+    }
 
-    document.getElementById('checkout-form').addEventListener('submit', (e) => {  
-      e.preventDefault();  
-      const data = new FormData(e.target);  
-      const details = Object.fromEntries(data.entries());  
-      let csv = 'Product,Cartons,Price/Carton,Total\n';  
-      let total = 0;  
+    products.forEach((product, index) => {
+      const div = document.createElement('div');
+      div.className = 'product';
+      div.innerHTML = `
+        <h3>${product.name}</h3>
+        <p>₹${product.price} per carton (12 bottles)</p>
+        <label>Cartons: <input type='number' min='4' value='4' id='qty-${index}'></label>
+        <button onclick='addToCart(${index})'>Add to Cart</button>
+      `;
+      productList.appendChild(div);
+    });
 
-      cart.forEach(item => {  
-        const rowTotal = item.qty * item.price;  
-        total += rowTotal;  
-        csv += `${item.name},${item.qty},${item.price},${rowTotal}\n`;  
-      });  
+    function addToCart(index) {
+      const qty = parseInt(document.getElementById(`qty-${index}`).value);
+      if (qty >= 4) {
+        cart.push({ ...products[index], qty });
+        alert(`${products[index].name} added to cart with ${qty} cartons`);
+        updateBill();
+      } else {
+        alert("Minimum order is 4 cartons");
+      }
+    }
 
-      csv += `\nName,${details.name}\nEmail,${details.email}\nPhone,${details.mobile}\nAddress,${details.address}\nPayment,${details.payment}\nGrand Total,${total}`;  
+    document.getElementById('checkout-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(e.target);
+      const details = Object.fromEntries(data.entries());
+      let csv = 'Product,Cartons,Price/Carton,Total\n';
+      let total = 0;
 
-      const blob = new Blob([csv], { type: 'text/csv' });  
-      const link = document.createElement('a');  
-      link.href = URL.createObjectURL(blob);  
-      link.download = 'veenaza-order.csv';  
-      link.click();  
+      cart.forEach(item => {
+        const rowTotal = item.qty * item.price;
+        total += rowTotal;
+        csv += `${item.name},${item.qty},${item.price},${rowTotal}\n`;
+      });
 
-      alert('Order placed successfully! CSV saved.');  
-    });  
+      csv += `\nName,${details.name}\nEmail,${details.email}\nPhone,${details.mobile}\nAddress,${details.address}\nPayment,${details.payment}\nGrand Total,${total}`;
+
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'veenaza-order.csv';
+      link.click();
+
+      alert('Order placed successfully! CSV saved.');
+    });
   </script>
+
 </body>
 </html>
