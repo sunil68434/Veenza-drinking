@@ -1,325 +1,142 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>  
-  <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
-  <title>Veenza Drinking Water Pvt. Ltd.</title>  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />  
-  <style>  
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veenza Drinking Water Pvt. Ltd.</title>
+  <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9fbff;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      color: #222;
-      font-size: 14px;
     }
-
     header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       background-color: #0099ff;
       color: white;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 10px 20px;
+      flex-wrap: wrap;
     }
-
     .header-left {
       display: flex;
       align-items: center;
-      gap: 15px;
     }
-
     .header-left img {
-      height: 60px;
-      width: 60px;
-      border-radius: 50%;
+      height: 50px;
+      margin-right: 10px;
     }
-
-    .company-info {
-      display: flex;
-      flex-direction: column;
-    }
-
     .company-info h1 {
+      font-size: 18px;
       margin: 0;
-      font-size: 22px;
     }
-
-    .company-info small {
+    .company-info p {
+      margin: 2px 0;
       font-size: 12px;
-      opacity: 0.9;
     }
-
-    nav input {
-      padding: 6px;
-      font-size: 13px;
+    .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 20px;
+      background-color: #007acc;
+      z-index: 1;
       border-radius: 5px;
-      border: none;
     }
-
+    .dropdown-content a {
+      display: block;
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+    }
+    .dropdown-content a:hover {
+      background-color: #005f99;
+    }
+    .whatsapp-button {
+      background-color: #25D366;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-top: 5px;
+      display: inline-block;
+    }
     .container {
       padding: 20px;
     }
-
-    h2 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .product {
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .product h3 {
-      margin-top: 0;
-      font-size: 15px;
-    }
-
-    .product p {
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-
-    .product input {
-      width: 60px;
-    }
-
-    .product button {
-      background-color: #0077cc;
-      color: white;
-      border: none;
-      padding: 8px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 13px;
-    }
-
-    .bill {
-      background: #fff;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 30px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
     table {
       width: 100%;
-      font-size: 13px;
       border-collapse: collapse;
-    }
-
-    th, td {
-      padding: 8px;
-      border: 1px solid #ccc;
-      text-align: left;
-    }
-
-    .checkout-form {
       margin-top: 20px;
     }
-
-    .checkout-form input, .checkout-form select {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      font-size: 13px;
-      border-radius: 5px;
+    th, td {
       border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
     }
-
-    .checkout-form button {
-      background-color: #0099ff;
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .whatsapp-btn {
-      background-color: #25D366;
-      color: white;
-      padding: 10px;
-      display: inline-block;
-      border-radius: 5px;
-      margin-top: 15px;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .branches {
-      margin-top: 30px;
-    }
-
-    footer {
-      background-color: #000;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 13px;
-      margin-top: 40px;
+    th {
+      background-color: #f2f2f2;
     }
   </style>
 </head>
 <body>
-
   <header>
     <div class="header-left">
-      <img src="logo.png" alt="Logo">
+      <img src="logo.png" alt="Logo" />
       <div class="company-info">
         <h1>Veenza Drinking Water Pvt. Ltd.</h1>
-        <small>Pure Water, Healthy Life</small>
-        <small>Govindgarh, Pushkar ke pass, Ajmer - 305201</small>
+        <p>Govindgarh, Pushkar ke pass, Ajmer - 305201</p>
+        <p>Pure Water, Healthy Life</p>
       </div>
     </div>
-    <nav>
-      <input type="text" placeholder="Search...">
-    </nav>
-  </header>
-
-  <div class="container">
-    <h2>Our Products</h2>
-    <div class="products" id="product-list"></div>
-
-    <div class="bill" id="bill" style="display:none">
-      <h2>Order Summary</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Cartons</th>
-            <th>Price/Carton</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody id="bill-body"></tbody>
-      </table>
-      <h3 id="grand-total"></h3>
+    <div>
+      <span class="menu-icon" onclick="toggleMenu()">☰</span>
+      <div id="dropdown-menu" class="dropdown-content">
+        <a href="#" onclick="showTrackOrder()">Track Order</a>
+        <a href="#" onclick="showAdminPanel()">Owner's Order List</a>
+      </div>
+      <a class="whatsapp-button" href="https://wa.me/917976065034" target="_blank">Chat on WhatsApp</a>
     </div>
-
-    <h2>Checkout</h2>
-    <form class="checkout-form" id="checkout-form">
-      <input type="text" name="name" placeholder="Full Name" required />
-      <input type="email" name="email" placeholder="Email Address" required />
-      <input type="tel" name="mobile" placeholder="Mobile Number" required />
-      <input type="text" name="address" placeholder="Full Address" required />
-      <select name="payment" required>
-        <option value="">Select Payment Method</option>
-        <option value="card">Credit/Debit Card</option>
-        <option value="upi">UPI</option>
-        <option value="cod">Cash on Delivery</option>
-      </select>
-      <button type="submit">Place Order</button>
-    </form>
-
-    <a class="whatsapp-btn" href="https://wa.me/917976065034" target="_blank">
-      <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-    </a>
-
-    <div class="branches">
-      <h2>Our Branches</h2>
-      <ul>
-        <li><strong>Ajmer Main Plant:</strong> Govindgarh, near Pushkar, Ajmer - 305201</li>
-        <li><strong>Branch 1:</strong> Jaipur Road, Kishangarh</li>
-        <li><strong>Branch 2:</strong> Beawar Highway, Ajmer</li>
-        <li><strong>Branch 3:</strong> Kekri Market Area</li>
-      </ul>
-    </div>
-  </div>
-
-  <footer>
-    <p>&copy; 2025 Veenza Drinking Water Pvt. Ltd. All Rights Reserved.</p>
-    <p>Follow us on: Facebook | Instagram | Twitter</p>
-  </footer>
-
-  <script>
-    const products = [
-      { name: '250ml Bottle', price: 5 * 12 },
-      { name: '500ml Bottle', price: 7 * 12 },
-      { name: '1L Bottle', price: 8 * 12 },
-      { name: '5L Jar', price: 10 * 12 },
-      { name: '10L Jar', price: 15 * 12 },
-    ];
-
-    const productList = document.getElementById('product-list');
-    const cart = [];
-
-    function updateBill() {
-      const billDiv = document.getElementById('bill');
-      const billBody = document.getElementById('bill-body');
-      const grandTotal = document.getElementById('grand-total');
-
-      billBody.innerHTML = '';
-      let total = 0;
-
-      cart.forEach(item => {
-        const row = `<tr><td>${item.name}</td><td>${item.qty}</td><td>₹${item.price}</td><td>₹${item.price * item.qty}</td></tr>`;
-        total += item.price * item.qty;
-        billBody.innerHTML += row;
-      });
-
-      grandTotal.innerText = 'Grand Total: ₹' + total;
-      billDiv.style.display = 'block';
+  </header>  <div class="container" id="main-content">
+    <h2>Welcome to Veenza Water Order Page</h2>
+    <p>Place your water order now.</p>
+    <!-- Order form and dynamic content goes here -->
+  </div>  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('dropdown-menu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
     }
 
-    products.forEach((product, index) => {
-      const div = document.createElement('div');
-      div.className = 'product';
-      div.innerHTML = `
-        <h3>${product.name}</h3>
-        <p>₹${product.price} per carton (12 bottles)</p>
-        <label>Cartons: <input type='number' min='4' value='4' id='qty-${index}'></label>
-        <button onclick='addToCart(${index})'>Add to Cart</button>
+    function showTrackOrder() {
+      document.getElementById('main-content').innerHTML = `
+        <h2>Track Your Order</h2>
+        <p>Feature coming soon.</p>
       `;
-      productList.appendChild(div);
-    });
-
-    function addToCart(index) {
-      const qty = parseInt(document.getElementById(`qty-${index}`).value);
-      if (qty >= 4) {
-        cart.push({ ...products[index], qty });
-        alert(`${products[index].name} added to cart with ${qty} cartons`);
-        updateBill();
-      } else {
-        alert("Minimum order is 4 cartons");
-      }
     }
 
-    document.getElementById('checkout-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const data = new FormData(e.target);
-      const details = Object.fromEntries(data.entries());
-      let csv = 'Product,Cartons,Price/Carton,Total\n';
-      let total = 0;
+    function showAdminPanel() {
+      const password = prompt("Enter owner's password:");
+      if (password !== 'admin123') {
+        alert('Wrong password');
+        return;
+      }
 
-      cart.forEach(item => {
-        const rowTotal = item.qty * item.price;
-        total += rowTotal;
-        csv += `${item.name},${item.qty},${item.price},${rowTotal}\n`;
+      // Simulated order list
+      const orders = [
+        { name: 'Rahul', address: 'Ajmer', amount: '₹120', status: 'Pending' },
+        { name: 'Priya', address: 'Pushkar', amount: '₹240', status: 'Delivered' }
+      ];
+
+      let html = `<h2>Owner's Order List</h2><table><tr><th>Name</th><th>Address</th><th>Amount</th><th>Status</th></tr>`;
+      orders.forEach(order => {
+        html += `<tr><td>${order.name}</td><td>${order.address}</td><td>${order.amount}</td><td>${order.status}</td></tr>`;
       });
-
-      csv += `\nName,${details.name}\nEmail,${details.email}\nPhone,${details.mobile}\nAddress,${details.address}\nPayment,${details.payment}\nGrand Total,${total}`;
-
-      const blob = new Blob([csv], { type: 'text/csv' });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = 'veenaza-order.csv';
-      link.click();
-
-      alert('Order placed successfully! CSV saved.');
-    });
-  </script>
-
-</body>
+      html += `</table>`;
+      document.getElementById('main-content').innerHTML = html;
+    }
+  </script></body>
 </html>
