@@ -1,56 +1,238 @@
-
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veenza - Packaged Drinking Water</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veenza - Packaged Water Bottles</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    header {
+      background-color: #87CEEB;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+    }
+
+    .menu-btn {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .menu-list {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 10px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .menu-list a {
+      display: block;
+      text-decoration: none;
+      color: black;
+      padding: 5px 0;
+    }
+
+    .search-box {
+      flex: 1;
+      margin: 0 15px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 5px 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .whatsapp-btn {
+      font-size: 20px;
+      text-decoration: none;
+      color: green;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: gray;
+    }
+
+    .products {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .add-to-cart {
+      margin-top: 10px;
+      background-color: #87CEEB;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .order-form {
+      padding: 30px;
+      background: #f2f2f2;
+    }
+
+    .order-form h2 {
+      text-align: center;
+    }
+
+    .order-form input, .order-form select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .order-form button {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .about {
+      padding: 30px;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    @media screen and (max-width: 600px) {
+      .search-box {
+        margin: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="menu-icon">&#9776;
-            <div class="dropdown">
-                <a href="#">Login</a>
-                <a href="#">Connect to Veenza</a>
-                <a href="#">ऑर्डर ट्रैक करें</a>
-                <a href="#">Feedback</a>
-                <a href="https://wa.me/917976065034" target="_blank">Chat on WhatsApp</a>
-            </div>
-        </div>
-        <input type="text" class="search-box" placeholder="Search...">
-        <a class="whatsapp-chat" href="https://wa.me/917976065034" target="_blank">WhatsApp</a>
-    </header>
 
-    <section class="company-info">
-        <h1>Veenza</h1>
-        <p>📍Govindgarh, Pushkar, Ajmer, 305201</p>
-    </section>
+<header>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <div class="search-box">
+    <input type="text" placeholder="Search products..."/>
+  </div>
+  <a class="whatsapp-btn" href="https://wa.me/917976065034" target="_blank">💬</a>
+  <div class="menu-list" id="menu">
+    <a href="#">Login</a>
+    <a href="#">Connect to Veenza</a>
+    <a href="#">ऑर्डर ट्रैक करें</a>
+    <a href="#">Feedback</a>
+    <a href="https://wa.me/917976065034" target="_blank">Chat on WhatsApp</a>
+  </div>
+</header>
 
-    <section class="products">
-        <div class="product-card">
-            <img src="images/water_bottle_1.jpg" alt="1L Bottle">
-            <h2>1L Water Bottle</h2>
-            <p>₹20</p>
-            <button onclick="window.location.href='checkout.html'">Add to Cart</button>
-        </div>
-        <div class="product-card">
-            <img src="images/water_bottle_2.jpg" alt="500ml Bottle">
-            <h2>500ml Water Bottle</h2>
-            <p>₹10</p>
-            <button onclick="window.location.href='checkout.html'">Add to Cart</button>
-        </div>
-    </section>
+<section class="hero">
+  <h1>VEENZA</h1>
+  <p>📍Govindgarh, Pushkar, Ajmer, 305201</p>
+</section>
 
-    <section class="about">
-        <h2>About Veenza</h2>
-        <p>We supply natural packaged water across India and nearby regions. Our water is 100% natural and pure.</p>
-        <p>Owner: Sunil Kumar</p>
-        <p>Email: <a href="mailto:sunilsila369@gmail.com">sunilsila369@gmail.com</a></p>
-    </section>
+<section class="products">
+  <div class="product">
+    <img src="images/water1.jpg" alt="1L Bottle">
+    <h3>1 Litre Bottle</h3>
+    <p>₹20 per bottle</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <div class="product">
+    <img src="images/water2.jpg" alt="500ml Bottle">
+    <h3>500ml Bottle</h3>
+    <p>₹10 per bottle</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <div class="product">
+    <img src="images/water3.jpg" alt="20L Jar">
+    <h3>20 Litre Jar</h3>
+    <p>₹80 per jar</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+</section>
 
-    <footer>
-        <p>&copy; 2025 Veenza. All rights reserved.</p>
-    </footer>
+<section class="order-form">
+  <h2>Place Your Order</h2>
+  <form>
+    <input type="text" placeholder="Your Name" required />
+    <input type="email" placeholder="Email" required />
+    <input type="text" placeholder="Home Address" required />
+    <select>
+      <option>Select Payment Method</option>
+      <option>Cash on Delivery</option>
+      <option>UPI / QR Code</option>
+      <option>Net Banking</option>
+    </select>
+    <button type="submit">Submit Order</button>
+  </form>
+</section>
+
+<section class="about">
+  <h2>About Us</h2>
+  <p>
+    We supply natural bottled water across India and nearby regions.  
+    Our water is 100% natural and safe to drink.
+  </p>
+  <p>Owner: Sunil Kumar | Email: sunilsila369@gmail.com</p>
+</section>
+
+<footer>
+  <p>&copy; 2025 Veenza. All Rights Reserved.</p>
+  <p>Privacy Policy | Terms & Conditions | Contact Us</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+</script>
+
 </body>
 </html>
