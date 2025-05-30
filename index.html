@@ -70,11 +70,18 @@
       margin-top: 20px;
     }
     .feedback-form, .checkout {
-      max-width: 500px;
+      max-width: 600px;
       margin: auto;
       padding: 20px;
       background: white;
       border-radius: 10px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
     }
   </style>
 </head>
@@ -114,17 +121,12 @@
   </div>
 </div><div class="checkout">
   <h2>Checkout</h2>
-  <p><strong>Items:</strong></p>
-  <div id="cartList"></div>
-  <label for="payment">Select Payment Method:</label>
-  <select id="payment">
-    <option value="">--Choose Payment Method--</option>
-    <option value="Card">Card</option>
-    <option value="UPI">UPI</option>
-    <option value="COD">Cash on Delivery</option>
-  </select>
-  <br><br>
-  <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+  <div id="cartList"></div>  <h3>Customer Details</h3>
+  <input type="text" id="name" placeholder="Full Name" required>
+  <input type="email" id="email" placeholder="Email" required>
+  <input type="tel" id="mobile" placeholder="Mobile Number" required>
+  <textarea id="address" placeholder="Full Delivery Address" required></textarea><label for="payment">Select Payment Method:</label> <select id="payment"> <option value="">--Choose Payment Method--</option> <option value="Card">Card</option> <option value="UPI">UPI</option> <option value="COD">Cash on Delivery</option> </select> <br><br> <button class="checkout-btn" onclick="checkout()">Place Order</button>
+
 </div><div class="feedback-form">
   <h2>Feedback</h2>
   <form action="https://formspree.io/f/xeqybpbg" method="POST">
@@ -144,7 +146,6 @@
   function addToCart(name, price, qtyId) {
     const qty = document.getElementById(qtyId).value;
     cart.push({ name, qty, price });
-    alert(name + ' added to cart!');
     updateCartList();
   }
 
@@ -154,12 +155,32 @@
   }
 
   function checkout() {
-    const method = document.getElementById("payment").value;
-    if (!method) {
-      alert("Please select a payment method.");
-    } else {
-      alert("Thank you for your order! Payment Method: " + method);
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const mobile = document.getElementById("mobile").value;
+    const address = document.getElementById("address").value;
+    const payment = document.getElementById("payment").value;
+
+    if (!name || !email || !mobile || !address || !payment) {
+      alert("Please fill all the details before checkout.");
+      return;
     }
+
+    let orderDetails = `Name: ${name}\nEmail: ${email}\nMobile: ${mobile}\nAddress: ${address}\nPayment: ${payment}\n\nOrder:\n`;
+    cart.forEach(item => {
+      orderDetails += `${item.name} x ${item.qty} = ₹${item.qty * item.price}\n`;
+    });
+
+    const blob = new Blob([orderDetails], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Veenza_Order.csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    alert("Order placed successfully! File saved.");
   }
 </script></body>
 </html>
