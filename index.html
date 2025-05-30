@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VEENZA DRINKING WATER</title>
+  <title>Veenza Drinking Water</title>
   <style>
     body {
       margin: 0;
@@ -49,26 +49,56 @@
       border-bottom: 2px solid #000;
       padding-bottom: 10px;
     }
-    .products, .services {
+    .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
       margin-top: 20px;
     }
-    .product, .service {
+    .product {
       background: #fff;
       padding: 15px;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    .order-button {
+    .product h3 {
+      margin-top: 0;
+    }
+    .quantity {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+    .quantity button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      margin: 0 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .order-button, .add-to-cart {
       display: inline-block;
-      margin-top: 20px;
+      margin-top: 10px;
       background: black;
       color: white;
-      padding: 10px 20px;
+      padding: 8px 16px;
       border-radius: 5px;
       text-decoration: none;
+      cursor: pointer;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .service {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     .social-media {
       margin-top: 30px;
@@ -94,6 +124,24 @@
       border-radius: 5px;
     }
   </style>
+  <script>
+    function increment(id) {
+      const input = document.getElementById(id);
+      let value = parseInt(input.value);
+      input.value = value + 1;
+    }
+    function decrement(id) {
+      const input = document.getElementById(id);
+      let value = parseInt(input.value);
+      if (value > 100) {
+        input.value = value - 1;
+      }
+    }
+    function addToCart(product, id) {
+      const quantity = document.getElementById(id).value;
+      alert(`${quantity} bottles of ${product} added to cart.`);
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -104,11 +152,51 @@
   </header>  <div class="tagline">Pure Water, Healthy Life</div>  <section id="products">
     <h2>Our Products</h2>
     <div class="products">
-      <div class="product">250 ml Water Bottle</div>
-      <div class="product">500 ml Water Bottle</div>
-      <div class="product">1 Litre Water Bottle</div>
-      <div class="product">5 Litre Water Jar</div>
-      <div class="product">10 Litre Water Jar</div>
+      <div class="product">
+        <h3>250 ml Water Bottle</h3>
+        <div class="quantity">
+          <button onclick="decrement('q1')">-</button>
+          <input id="q1" type="number" value="100" min="100" readonly />
+          <button onclick="increment('q1')">+</button>
+        </div>
+        <button class="add-to-cart" onclick="addToCart('250 ml Water Bottle', 'q1')">Add to Cart</button>
+      </div>
+      <div class="product">
+        <h3>500 ml Water Bottle</h3>
+        <div class="quantity">
+          <button onclick="decrement('q2')">-</button>
+          <input id="q2" type="number" value="100" min="100" readonly />
+          <button onclick="increment('q2')">+</button>
+        </div>
+        <button class="add-to-cart" onclick="addToCart('500 ml Water Bottle', 'q2')">Add to Cart</button>
+      </div>
+      <div class="product">
+        <h3>1 Litre Water Bottle</h3>
+        <div class="quantity">
+          <button onclick="decrement('q3')">-</button>
+          <input id="q3" type="number" value="100" min="100" readonly />
+          <button onclick="increment('q3')">+</button>
+        </div>
+        <button class="add-to-cart" onclick="addToCart('1 Litre Water Bottle', 'q3')">Add to Cart</button>
+      </div>
+      <div class="product">
+        <h3>5 Litre Water Jar</h3>
+        <div class="quantity">
+          <button onclick="decrement('q4')">-</button>
+          <input id="q4" type="number" value="100" min="100" readonly />
+          <button onclick="increment('q4')">+</button>
+        </div>
+        <button class="add-to-cart" onclick="addToCart('5 Litre Water Jar', 'q4')">Add to Cart</button>
+      </div>
+      <div class="product">
+        <h3>10 Litre Water Jar</h3>
+        <div class="quantity">
+          <button onclick="decrement('q5')">-</button>
+          <input id="q5" type="number" value="100" min="100" readonly />
+          <button onclick="increment('q5')">+</button>
+        </div>
+        <button class="add-to-cart" onclick="addToCart('10 Litre Water Jar', 'q5')">Add to Cart</button>
+      </div>
     </div>
   </section>  <section id="services">
     <h2>Our Services</h2>
