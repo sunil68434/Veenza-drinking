@@ -1,186 +1,202 @@
-<!DOCTYPE html><html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Veenza Drinking Water</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #e6f7ff;
-      color: #000;
-    }
-    header {
-      background-color: #000;
-      color: #fff;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo {
-      border-radius: 50%;
-      height: 60px;
-    }
-    .title {
-      font-size: 24px;
-      font-weight: bold;
-    }
-    .tagline {
-      text-align: center;
-      font-size: 20px;
-      margin: 10px 0;
-    }
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-    }
-    .product {
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      width: 250px;
-      margin: 10px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .product h3 {
-      margin: 10px 0;
-    }
-    .cart-btn, .checkout-btn {
-      background-color: #00aaff;
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .quantity-input {
-      width: 60px;
-      margin: 5px;
-    }
-    footer {
-      text-align: center;
-      padding: 10px;
-      background: #000;
-      color: white;
-      margin-top: 20px;
-    }
-    .feedback-form, .checkout {
-      max-width: 600px;
-      margin: auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 8px;
-      margin: 5px 0;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
+      background: linear-gradient(to right, #e0f7ff, #f8fcff);
+      color: #333;
+    }header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #007acc;
+  color: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav input[type="text"] {
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: none;
+}
+
+nav .menu-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  color: #007acc;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.product {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product h3 {
+  margin: 0;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+}
+
+.quantity input {
+  width: 50px;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.btn {
+  background-color: #007acc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.feedback, .checkout {
+  margin-top: 2rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+}
+
   </style>
-</head>
-<body><header>
-  <img src="logo.png" alt="Veenza Logo" class="logo">
-  <div class="title">Veenza Drinking Water Private Limited Company</div>
-</header><div class="tagline">Pure Water, Healthy Life</div><div class="products">
-  <div class="product">
-    <h3>250ml Bottle</h3>
-    <p>Price: ₹5</p>
-    <input type="number" class="quantity-input" min="100" value="100" id="qty250">
-    <button class="cart-btn" onclick="addToCart('250ml', 5, 'qty250')">Add to Cart</button>
+</head><body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+      <h1>Veenza Drinking Water Pvt. Ltd.</h1>
+    </div>
+    <nav>
+      <input type="text" placeholder="Search...">
+      <i class="fas fa-bars menu-icon"></i>
+    </nav>
+  </header>  <div class="container">
+    <div class="tagline">Pure Water, Healthy Life</div><div class="product">
+  <h3>250ml Water Bottle - ₹5</h3>
+  <div class="quantity">
+    <label>Qty:</label>
+    <input type="number" min="100" value="100">
+    <button class="btn">Add to Cart</button>
   </div>
-  <div class="product">
-    <h3>500ml Bottle</h3>
-    <p>Price: ₹7</p>
-    <input type="number" class="quantity-input" min="100" value="100" id="qty500">
-    <button class="cart-btn" onclick="addToCart('500ml', 7, 'qty500')">Add to Cart</button>
+</div>
+
+<div class="product">
+  <h3>500ml Water Bottle - ₹7</h3>
+  <div class="quantity">
+    <label>Qty:</label>
+    <input type="number" min="100" value="100">
+    <button class="btn">Add to Cart</button>
   </div>
-  <div class="product">
-    <h3>1L Bottle</h3>
-    <p>Price: ₹8</p>
-    <input type="number" class="quantity-input" min="100" value="100" id="qty1L">
-    <button class="cart-btn" onclick="addToCart('1L', 8, 'qty1L')">Add to Cart</button>
+</div>
+
+<div class="product">
+  <h3>1L Water Bottle - ₹8</h3>
+  <div class="quantity">
+    <label>Qty:</label>
+    <input type="number" min="100" value="100">
+    <button class="btn">Add to Cart</button>
   </div>
-  <div class="product">
-    <h3>5L Jar</h3>
-    <p>Price: ₹10</p>
-    <input type="number" class="quantity-input" min="100" value="100" id="qty5L">
-    <button class="cart-btn" onclick="addToCart('5L', 10, 'qty5L')">Add to Cart</button>
+</div>
+
+<div class="product">
+  <h3>5L Water Jar - ₹10</h3>
+  <div class="quantity">
+    <label>Qty:</label>
+    <input type="number" min="100" value="100">
+    <button class="btn">Add to Cart</button>
   </div>
-  <div class="product">
-    <h3>10L Jar</h3>
-    <p>Price: ₹15</p>
-    <input type="number" class="quantity-input" min="100" value="100" id="qty10L">
-    <button class="cart-btn" onclick="addToCart('10L', 15, 'qty10L')">Add to Cart</button>
+</div>
+
+<div class="product">
+  <h3>10L Water Jar - ₹15</h3>
+  <div class="quantity">
+    <label>Qty:</label>
+    <input type="number" min="100" value="100">
+    <button class="btn">Add to Cart</button>
   </div>
-</div><div class="checkout">
+</div>
+
+<div class="checkout">
   <h2>Checkout</h2>
-  <div id="cartList"></div>  <h3>Customer Details</h3>
-  <input type="text" id="name" placeholder="Full Name" required>
-  <input type="email" id="email" placeholder="Email" required>
-  <input type="tel" id="mobile" placeholder="Mobile Number" required>
-  <textarea id="address" placeholder="Full Delivery Address" required></textarea><label for="payment">Select Payment Method:</label> <select id="payment"> <option value="">--Choose Payment Method--</option> <option value="Card">Card</option> <option value="UPI">UPI</option> <option value="COD">Cash on Delivery</option> </select> <br><br> <button class="checkout-btn" onclick="checkout()">Place Order</button>
-
-</div><div class="feedback-form">
-  <h2>Feedback</h2>
-  <form action="https://formspree.io/f/xeqybpbg" method="POST">
-    <label>Name:</label><br>
-    <input type="text" name="name" required><br>
-    <label>Email:</label><br>
-    <input type="email" name="email" required><br>
-    <label>Message:</label><br>
-    <textarea name="message" rows="5" required></textarea><br><br>
-    <button class="cart-btn" type="submit">Submit</button>
+  <form>
+    <input type="text" placeholder="Full Name" required><br><br>
+    <input type="email" placeholder="Email" required><br><br>
+    <input type="tel" placeholder="Mobile Number" required><br><br>
+    <textarea placeholder="Shipping Address" required></textarea><br><br>
+    <input type="text" placeholder="Payment Method (leave blank for now)" required><br><br>
+    <button class="btn">Submit Order</button>
   </form>
-</div><footer>
-  &copy; 2025 Veenza. All rights reserved. | Social Media: [Add here]
-</footer><script>
-  const cart = [];
+</div>
 
-  function addToCart(name, price, qtyId) {
-    const qty = document.getElementById(qtyId).value;
-    cart.push({ name, qty, price });
-    updateCartList();
-  }
+<div class="feedback">
+  <h2>Feedback</h2>
+  <form action="https://formspree.io/f/yourformid" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required><br><br>
+    <input type="email" name="email" placeholder="Your Email" required><br><br>
+    <textarea name="message" placeholder="Your Feedback" required></textarea><br><br>
+    <button class="btn">Send Feedback</button>
+  </form>
+</div>
 
-  function updateCartList() {
-    const cartList = document.getElementById("cartList");
-    cartList.innerHTML = cart.map(item => `<p>${item.name} x ${item.qty} = ₹${item.qty * item.price}</p>`).join('');
-  }
+  </div><a class="whatsapp" href="https://wa.me/917976065034" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-  function checkout() {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const mobile = document.getElementById("mobile").value;
-    const address = document.getElementById("address").value;
-    const payment = document.getElementById("payment").value;
-
-    if (!name || !email || !mobile || !address || !payment) {
-      alert("Please fill all the details before checkout.");
-      return;
-    }
-
-    let orderDetails = `Name: ${name}\nEmail: ${email}\nMobile: ${mobile}\nAddress: ${address}\nPayment: ${payment}\n\nOrder:\n`;
-    cart.forEach(item => {
-      orderDetails += `${item.name} x ${item.qty} = ₹${item.qty * item.price}\n`;
-    });
-
-    const blob = new Blob([orderDetails], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "Veenza_Order.csv";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-
-    alert("Order placed successfully! File saved.");
-  }
-</script></body>
+</body>
 </html>
