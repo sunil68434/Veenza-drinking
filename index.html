@@ -1,4 +1,7 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Veenza Drinking Water</title>
@@ -10,115 +13,118 @@
       padding: 0;
       background: linear-gradient(to right, #e0f7ff, #f8fcff);
       color: #333;
-    }header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background-color: #007acc;
-  color: white;
-}
+    }
 
-.logo {
-  display: flex;
-  align-items: center;
-}
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: #007acc;
+      color: white;
+    }
 
-.logo img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
+    .logo {
+      display: flex;
+      align-items: center;
+    }
 
-nav {
-  display: flex;
-  align-items: center;
-}
+    .logo img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
 
-nav input[type="text"] {
-  padding: 5px;
-  margin-right: 10px;
-  border-radius: 4px;
-  border: none;
-}
+    nav {
+      display: flex;
+      align-items: center;
+    }
 
-nav .menu-icon {
-  font-size: 24px;
-  cursor: pointer;
-}
+    nav input[type="text"] {
+      padding: 5px;
+      margin-right: 10px;
+      border-radius: 4px;
+      border: none;
+    }
 
-.container {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: auto;
-}
+    nav .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
 
-.tagline {
-  font-size: 1.5rem;
-  color: #007acc;
-  text-align: center;
-  margin-bottom: 2rem;
-}
+    .container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-.product {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    .tagline {
+      font-size: 1.5rem;
+      color: #007acc;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
 
-.product h3 {
-  margin: 0;
-}
+    .product {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.quantity {
-  display: flex;
-  align-items: center;
-}
+    .product h3 {
+      margin: 0;
+    }
 
-.quantity input {
-  width: 50px;
-  text-align: center;
-  margin: 0 5px;
-}
+    .quantity {
+      display: flex;
+      align-items: center;
+    }
 
-.btn {
-  background-color: #007acc;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
+    .quantity input {
+      width: 50px;
+      text-align: center;
+      margin: 0 5px;
+    }
 
-.feedback, .checkout {
-  margin-top: 2rem;
-  background-color: white;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
+    .btn {
+      background-color: #007acc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-.whatsapp {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #25D366;
-  color: white;
-  border-radius: 50%;
-  padding: 15px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-}
+    .feedback, .checkout {
+      margin-top: 2rem;
+      background-color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
 
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      padding: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      text-align: center;
+    }
   </style>
-</head><body>
+</head>
+
+<body>
   <header>
     <div class="logo">
       <img src="logo.png" alt="Logo">
@@ -128,75 +134,80 @@ nav .menu-icon {
       <input type="text" placeholder="Search...">
       <i class="fas fa-bars menu-icon"></i>
     </nav>
-  </header>  <div class="container">
-    <div class="tagline">Pure Water, Healthy Life</div><div class="product">
-  <h3>250ml Water Bottle - ₹5</h3>
-  <div class="quantity">
-    <label>Qty:</label>
-    <input type="number" min="100" value="100">
-    <button class="btn">Add to Cart</button>
+  </header>
+
+  <div class="container">
+    <div class="tagline">Pure Water, Healthy Life</div>
+
+    <div class="product">
+      <h3>250ml Water Bottle - ₹5</h3>
+      <div class="quantity">
+        <label>Qty:</label>
+        <input type="number" min="100" value="100">
+        <button class="btn">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <h3>500ml Water Bottle - ₹7</h3>
+      <div class="quantity">
+        <label>Qty:</label>
+        <input type="number" min="100" value="100">
+        <button class="btn">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <h3>1L Water Bottle - ₹8</h3>
+      <div class="quantity">
+        <label>Qty:</label>
+        <input type="number" min="100" value="100">
+        <button class="btn">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <h3>5L Water Jar - ₹10</h3>
+      <div class="quantity">
+        <label>Qty:</label>
+        <input type="number" min="100" value="100">
+        <button class="btn">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <h3>10L Water Jar - ₹15</h3>
+      <div class="quantity">
+        <label>Qty:</label>
+        <input type="number" min="100" value="100">
+        <button class="btn">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="checkout">
+      <h2>Checkout</h2>
+      <form>
+        <input type="text" placeholder="Full Name" required><br><br>
+        <input type="email" placeholder="Email" required><br><br>
+        <input type="tel" placeholder="Mobile Number" required><br><br>
+        <textarea placeholder="Shipping Address" required></textarea><br><br>
+        <input type="text" placeholder="Payment Method (leave blank for now)" required><br><br>
+        <button class="btn">Submit Order</button>
+      </form>
+    </div>
+
+    <div class="feedback">
+      <h2>Feedback</h2>
+      <form action="https://formspree.io/f/yourformid" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required><br><br>
+        <input type="email" name="email" placeholder="Your Email" required><br><br>
+        <textarea name="message" placeholder="Your Feedback" required></textarea><br><br>
+        <button class="btn">Send Feedback</button>
+      </form>
+    </div>
   </div>
-</div>
 
-<div class="product">
-  <h3>500ml Water Bottle - ₹7</h3>
-  <div class="quantity">
-    <label>Qty:</label>
-    <input type="number" min="100" value="100">
-    <button class="btn">Add to Cart</button>
-  </div>
-</div>
-
-<div class="product">
-  <h3>1L Water Bottle - ₹8</h3>
-  <div class="quantity">
-    <label>Qty:</label>
-    <input type="number" min="100" value="100">
-    <button class="btn">Add to Cart</button>
-  </div>
-</div>
-
-<div class="product">
-  <h3>5L Water Jar - ₹10</h3>
-  <div class="quantity">
-    <label>Qty:</label>
-    <input type="number" min="100" value="100">
-    <button class="btn">Add to Cart</button>
-  </div>
-</div>
-
-<div class="product">
-  <h3>10L Water Jar - ₹15</h3>
-  <div class="quantity">
-    <label>Qty:</label>
-    <input type="number" min="100" value="100">
-    <button class="btn">Add to Cart</button>
-  </div>
-</div>
-
-<div class="checkout">
-  <h2>Checkout</h2>
-  <form>
-    <input type="text" placeholder="Full Name" required><br><br>
-    <input type="email" placeholder="Email" required><br><br>
-    <input type="tel" placeholder="Mobile Number" required><br><br>
-    <textarea placeholder="Shipping Address" required></textarea><br><br>
-    <input type="text" placeholder="Payment Method (leave blank for now)" required><br><br>
-    <button class="btn">Submit Order</button>
-  </form>
-</div>
-
-<div class="feedback">
-  <h2>Feedback</h2>
-  <form action="https://formspree.io/f/yourformid" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required><br><br>
-    <input type="email" name="email" placeholder="Your Email" required><br><br>
-    <textarea name="message" placeholder="Your Feedback" required></textarea><br><br>
-    <button class="btn">Send Feedback</button>
-  </form>
-</div>
-
-  </div><a class="whatsapp" href="https://wa.me/917976065034" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a class="whatsapp" href="https://wa.me/917976065034" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 </body>
 </html>
