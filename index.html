@@ -100,8 +100,8 @@ footer {
     <thead>
       <tr>
         <th>Product</th>
-        <th>Qty</th>
-        <th>Price</th>
+        <th>Cartons</th>
+        <th>Price/Carton</th>
         <th>Total</th>
       </tr>
     </thead>
@@ -131,11 +131,11 @@ footer {
     <p>Follow us on: [Social Media Links]</p>
   </footer>  <script>
     const products = [
-      { name: '250ml Bottle', price: 5 },
-      { name: '500ml Bottle', price: 7 },
-      { name: '1L Bottle', price: 8 },
-      { name: '5L Jar', price: 10 },
-      { name: '10L Jar', price: 15 },
+      { name: '250ml Bottle', price: 5 * 12 },
+      { name: '500ml Bottle', price: 7 * 12 },
+      { name: '1L Bottle', price: 8 * 12 },
+      { name: '5L Jar', price: 10 * 12 },
+      { name: '10L Jar', price: 15 * 12 },
     ];
 
     const productList = document.getElementById('product-list');
@@ -164,8 +164,8 @@ footer {
       div.className = 'product';
       div.innerHTML = `
         <h3>${product.name}</h3>
-        <p>₹${product.price} per unit</p>
-        <label>Qty: <input type='number' min='100' value='100' id='qty-${index}'></label>
+        <p>₹${product.price} per carton (12 bottles)</p>
+        <label>Cartons: <input type='number' min='4' value='4' id='qty-${index}'></label>
         <button onclick='addToCart(${index})'>Add to Cart</button>
       `;
       productList.appendChild(div);
@@ -173,12 +173,12 @@ footer {
 
     function addToCart(index) {
       const qty = parseInt(document.getElementById(`qty-${index}`).value);
-      if (qty >= 100) {
+      if (qty >= 4) {
         cart.push({ ...products[index], qty });
-        alert(`${products[index].name} added to cart with qty ${qty}`);
+        alert(`${products[index].name} added to cart with ${qty} cartons`);
         updateBill();
       } else {
-        alert("Minimum quantity is 100");
+        alert("Minimum order is 4 cartons");
       }
     }
 
@@ -186,7 +186,7 @@ footer {
       e.preventDefault();
       const data = new FormData(e.target);
       const details = Object.fromEntries(data.entries());
-      let csv = 'Product,Qty,Price,Total\n';
+      let csv = 'Product,Cartons,Price/Carton,Total\n';
       let total = 0;
 
       cart.forEach(item => {
