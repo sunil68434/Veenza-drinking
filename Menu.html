@@ -1,0 +1,18 @@
+import React from "react"; import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"; import { Menu, X } from "lucide-react"; import { useState } from "react";
+
+const App = () => { const [menuOpen, setMenuOpen] = useState(false);
+
+return ( <Router> <div className="min-h-screen bg-cyan-500 text-white"> {/* Navbar */} <div className="flex items-center justify-between p-4 bg-cyan-600 shadow-md"> <button onClick={() => setMenuOpen(!menuOpen)} className="text-white"> {menuOpen ? <X size={28} /> : <Menu size={28} />} </button> <h1 className="text-xl font-bold">Veenza</h1> <div></div> </div>
+
+{/* Sidebar Menu */}
+    {menuOpen && (
+      <div className="bg-cyan-700 p-4 space-y-4">
+        <Link to="/" onClick={() => setMenuOpen(false)} className="block text-white">Home</Link>
+        <Link to="/trekking-orders" onClick={() => setMenuOpen(false)} className="block text-white">Trekking Orders</Link>
+        <Link to="/contact" onClick={() => setMenuOpen(false)} className="block text-white">Contact Us</Link>
+        <Link to="/about" onClick={() => setMenuOpen(false)} className="block text-white">About</Link>
+      </div>
+    )}
+
+    <Routes>
+      <Route path="/
