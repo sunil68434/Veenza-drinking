@@ -1,206 +1,56 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Veenza Drinking Water Pvt. Ltd.</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f8ff;
-      margin: 0;
-      padding: 0;
-      color: #000;
-    }header {
-  background-color: #0099ff;
-  color: white;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
-header img {
-  height: 60px;
-  border-radius: 50%;
-}
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veenza - Packaged Drinking Water</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="menu-icon">&#9776;
+            <div class="dropdown">
+                <a href="#">Login</a>
+                <a href="#">Connect to Veenza</a>
+                <a href="#">ऑर्डर ट्रैक करें</a>
+                <a href="#">Feedback</a>
+                <a href="https://wa.me/917976065034" target="_blank">Chat on WhatsApp</a>
+            </div>
+        </div>
+        <input type="text" class="search-box" placeholder="Search...">
+        <a class="whatsapp-chat" href="https://wa.me/917976065034" target="_blank">WhatsApp</a>
+    </header>
 
-nav input {
-  padding: 5px;
-  width: 300px;
-  font-size: 16px;
-}
+    <section class="company-info">
+        <h1>Veenza</h1>
+        <p>📍Govindgarh, Pushkar, Ajmer, 305201</p>
+    </section>
 
-.container {
-  padding: 20px;
-}
+    <section class="products">
+        <div class="product-card">
+            <img src="images/water_bottle_1.jpg" alt="1L Bottle">
+            <h2>1L Water Bottle</h2>
+            <p>₹20</p>
+            <button onclick="window.location.href='checkout.html'">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images/water_bottle_2.jpg" alt="500ml Bottle">
+            <h2>500ml Water Bottle</h2>
+            <p>₹10</p>
+            <button onclick="window.location.href='checkout.html'">Add to Cart</button>
+        </div>
+    </section>
 
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
+    <section class="about">
+        <h2>About Veenza</h2>
+        <p>We supply natural packaged water across India and nearby regions. Our water is 100% natural and pure.</p>
+        <p>Owner: Sunil Kumar</p>
+        <p>Email: <a href="mailto:sunilsila369@gmail.com">sunilsila369@gmail.com</a></p>
+    </section>
 
-.product {
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.product h3 {
-  margin-top: 0;
-}
-
-.product button {
-  background-color: #0099ff;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.checkout-form input,
-.checkout-form select {
-  display: block;
-  margin: 10px 0;
-  padding: 10px;
-  width: 100%;
-}
-
-.bill {
-  margin-top: 30px;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-footer {
-  margin-top: 50px;
-  text-align: center;
-  padding: 20px;
-  background-color: #000;
-  color: white;
-}
-
-  </style>
-</head><body>
-  <header>
-    <div><img src="logo.png" alt="Logo" /></div>
-    <h1>Veenza Drinking Water Pvt. Ltd.</h1>
-    <nav>
-      <input type="text" placeholder="Search..." />
-    </nav>
-  </header>  <div class="container">
-    <h2>Our Products</h2>
-    <div class="products" id="product-list"></div><div class="bill" id="bill" style="display:none">
-  <h2>Order Summary</h2>
-  <table width="100%" border="1" cellpadding="10">
-    <thead>
-      <tr>
-        <th>Product</th>
-        <th>Cartons</th>
-        <th>Price/Carton</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody id="bill-body"></tbody>
-  </table>
-  <h3 id="grand-total"></h3>
-</div>
-
-<h2>Checkout</h2>
-<form class="checkout-form" id="checkout-form">
-  <input type="text" name="name" placeholder="Full Name" required />
-  <input type="email" name="email" placeholder="Email Address" required />
-  <input type="tel" name="mobile" placeholder="Mobile Number" required />
-  <input type="text" name="address" placeholder="Full Address" required />
-  <select name="payment" required>
-    <option value="">Select Payment Method</option>
-    <option value="card">Credit/Debit Card</option>
-    <option value="upi">UPI</option>
-    <option value="cod">Cash on Delivery</option>
-  </select>
-  <button type="submit">Place Order</button>
-</form>
-
-  </div>  <footer>
-    <p>Pure Water, Healthy Life</p>
-    <p>Govindgarh, Pushkar ke pass, Ajmer - 305201</p>
-    <p>Follow us on: [Social Media Links]</p>
-  </footer>  <script>
-    const products = [
-      { name: '250ml Bottle', price: 5 * 12 },
-      { name: '500ml Bottle', price: 7 * 12 },
-      { name: '1L Bottle', price: 8 * 12 },
-      { name: '5L Jar', price: 10 * 12 },
-      { name: '10L Jar', price: 15 * 12 },
-    ];
-
-    const productList = document.getElementById('product-list');
-    const cart = [];
-
-    function updateBill() {
-      const billDiv = document.getElementById('bill');
-      const billBody = document.getElementById('bill-body');
-      const grandTotal = document.getElementById('grand-total');
-
-      billBody.innerHTML = '';
-      let total = 0;
-
-      cart.forEach(item => {
-        const row = `<tr><td>${item.name}</td><td>${item.qty}</td><td>₹${item.price}</td><td>₹${item.price * item.qty}</td></tr>`;
-        total += item.price * item.qty;
-        billBody.innerHTML += row;
-      });
-
-      grandTotal.innerText = 'Grand Total: ₹' + total;
-      billDiv.style.display = 'block';
-    }
-
-    products.forEach((product, index) => {
-      const div = document.createElement('div');
-      div.className = 'product';
-      div.innerHTML = `
-        <h3>${product.name}</h3>
-        <p>₹${product.price} per carton (12 bottles)</p>
-        <label>Cartons: <input type='number' min='4' value='4' id='qty-${index}'></label>
-        <button onclick='addToCart(${index})'>Add to Cart</button>
-      `;
-      productList.appendChild(div);
-    });
-
-    function addToCart(index) {
-      const qty = parseInt(document.getElementById(`qty-${index}`).value);
-      if (qty >= 4) {
-        cart.push({ ...products[index], qty });
-        alert(`${products[index].name} added to cart with ${qty} cartons`);
-        updateBill();
-      } else {
-        alert("Minimum order is 4 cartons");
-      }
-    }
-
-    document.getElementById('checkout-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const data = new FormData(e.target);
-      const details = Object.fromEntries(data.entries());
-      let csv = 'Product,Cartons,Price/Carton,Total\n';
-      let total = 0;
-
-      cart.forEach(item => {
-        const rowTotal = item.qty * item.price;
-        total += rowTotal;
-        csv += `${item.name},${item.qty},${item.price},${rowTotal}\n`;
-      });
-
-      csv += `\nName,${details.name}\nEmail,${details.email}\nPhone,${details.mobile}\nAddress,${details.address}\nPayment,${details.payment}\nGrand Total,${total}`;
-
-      const blob = new Blob([csv], { type: 'text/csv' });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);();
-
-      alert('Order placed successfully! thankyou');
-    });
-  </script></body></html>
+    <footer>
+        <p>&copy; 2025 Veenza. All rights reserved.</p>
+    </footer>
+</body>
+</html>
