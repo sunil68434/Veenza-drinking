@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Veenza - Packaged Water Bottles</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="topbar">
+            <button class="menu-btn">&#9776;</button>
+            <input type="text" placeholder="Search...">
+            <a href="https://wa.me/917976065034" target="_blank" class="whatsapp-chat">Chat on WhatsApp</a>
+        </div>
+        <h1>VEENZA</h1>
+        <p class="address">📍Govindgarh, Pushkar, Ajmer, 305201</p>
+    </header>
+
+    <main>
+        <section class="products">
+            <h2>Our Products</h2>
+            <div class="product" data-price="120">
+                <img src="images/bottle1.jpg" alt="Water Bottle">
+                <p>20L Jar (per crate)</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-price="150">
+                <img src="images/bottle2.jpg" alt="Water Bottle">
+                <p>1L Bottles (12 crate)</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </section>
+
+        <section class="cart-summary">
+            <h3>Order Summary</h3>
+            <p>Total: ₹<span id="total">0</span></p>
+            <button onclick="submitOrder()">Submit Order</button>
+        </section>
+
+        <section class="customer-form">
+            <h2>Customer Information</h2>
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <input type="tel" placeholder="Mobile Number">
+            <textarea placeholder="Address"></textarea>
+            <select>
+                <option value="cod">Cash on Delivery</option>
+                <option value="online">Online Payment</option>
+            </select>
+        </section>
+    </main>
+
+    <footer>
+        <p>We supply natural bottled water crates across India and surrounding regions. Our water is 100% natural and safe for drinking.</p>
+        <p>Owner: Sunil Kumar | Email: sunilsila369@gmail.com</p>
+        <p>&copy; 2025 Veenza. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
